@@ -13,11 +13,138 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
+
+  <style>
+    /* Menú hamburguesa */
+    .menu {
+      position: relative;
+      padding: 20px;
+      background: linear-gradient(180deg, #3a72f8 0%, #cde3ff 100%);
+      color: white;
+    }
+
+    .menu-toggle {
+      width: 30px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+    }
+
+    .menu-toggle .bar {
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    .menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: fixed;
+      top: 60px;
+      left: 20px;
+      background-color: rgba(58, 114, 248, 0.95);
+      border-radius: 5px;
+      overflow: hidden;
+
+      max-height: 0;
+      width: 200px;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .menu-list.active {
+      max-height: 500px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-list li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .menu-list li:last-child {
+      border-bottom: none;
+    }
+
+    .menu-list li a {
+      display: block;
+      padding: 12px 16px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-list li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    /* Separar contenido del menú */
+    .header-image,
+    h1,
+    p,
+    .btn {
+      margin-left: 60px;
+    }
+
+    /* Sangría en lista de ¿Por qué elegirnos? */
+    #preguntas-frecuentes ul {
+      padding-left: 30px;
+      margin-left: 0;
+    }
+
+    /* Responsive para pantallas más grandes */
+    @media(min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+      .menu-list {
+        position: static;
+        max-height: none;
+        opacity: 1;
+        pointer-events: auto;
+        display: flex;
+        gap: 20px;
+        background: none;
+        width: auto;
+        box-shadow: none;
+      }
+      .menu-list li {
+        border-bottom: none;
+      }
+      .menu-list li a {
+        padding: 0;
+        color: white;
+      }
+      .header-image,
+      h1,
+      p,
+      .btn {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav class="menu">
-      <ul>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" role="button" tabindex="0">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <ul class="menu-list" id="menu-list">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#carga-datos">Cargá tus datos</a></li>
         <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
@@ -122,5 +249,22 @@
   <footer>
     <p>&copy; 2025 Grupo Fortuna. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuList = document.getElementById('menu-list');
+
+    menuToggle.addEventListener('click', () => {
+      menuList.classList.toggle('active');
+    });
+
+    // También permitir toggle con tecla Enter o espacio para accesibilidad
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuList.classList.toggle('active');
+      }
+    });
+  </script>
 </body>
 </html>
