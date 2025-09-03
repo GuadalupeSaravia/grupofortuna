@@ -103,6 +103,18 @@ section p {
   margin-left: 10px;
 }
 
+/* Listas dentro de las secciones */
+section ul {
+  padding-left: 30px;   /* sangría hacia adentro */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+section ul li {
+  margin-bottom: 8px;   /* espacio entre ítems */
+  line-height: 1.6;     /* aire entre líneas */
+}
+
 /* Iconos sociales */
 .social-icons {
   margin-top: 20px;
