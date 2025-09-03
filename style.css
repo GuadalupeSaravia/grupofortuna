@@ -105,10 +105,13 @@ section p {
 
 /* Listas dentro de las secciones */
 section ul {
-  padding-left: 30px;   /* sangría hacia adentro */
+  list-style-position: inside; /* Hace que el punto esté dentro de la caja de la lista */
+  padding-left: 20px;           /* Sangría interna */
+  margin-left: 20px;            /* Sangría externa opcional */
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 
 section ul li {
   margin-bottom: 8px;   /* espacio entre ítems */
