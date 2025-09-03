@@ -64,12 +64,18 @@ header p {
 
 /* Secciones */
 section {
-  max-width: 900px;
+  width: 60%;
   margin: 60px auto;
   padding: 20px;
   background-color: var(--white);
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  section {
+    width: 90%;
+  }
 }
 
 section h2 {
