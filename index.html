@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grupo Fortuna</title>
 
-  <!-- Estilo personalizado -->
-  <link rel="stylesheet" href="style.css" />
-
   <!-- Font Awesome para los íconos -->
   <link
     rel="stylesheet"
@@ -15,144 +12,189 @@
   />
 
   <style>
-    /* Menú hamburguesa */
-    .menu {
+    /* Estilos generales para el body y el header */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #4a90e2, #cce4ff);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
       position: relative;
-      padding: 20px;
-      background: linear-gradient(180deg, #3a72f8 0%, #cde3ff 100%);
       color: white;
     }
 
-    .menu-toggle {
-      width: 30px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1001;
+    header img.header-image {
+      max-width: 200px;
+      margin-bottom: 1rem;
     }
 
-    .menu-toggle .bar {
-      height: 3px;
-      background-color: white;
-      border-radius: 2px;
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+      font-weight: bold;
     }
 
-    .menu-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      position: fixed;
-      top: 60px;
-      left: 20px;
-      background-color: rgba(58, 114, 248, 0.95);
-      border-radius: 5px;
-      overflow: hidden;
-
-      max-height: 0;
-      width: 200px;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .menu-list.active {
-      max-height: 500px;
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .menu-list li {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .menu-list li:last-child {
-      border-bottom: none;
-    }
-
-    .menu-list li a {
-      display: block;
-      padding: 12px 16px;
+    a.btn {
+      background-color: #2f6dcc;
       color: white;
       text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      display: inline-block;
     }
 
-    .menu-list li a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 4px;
+    a.btn:hover {
+      transform: scale(1.1);
     }
 
-    /* Separar contenido del menú */
-    .header-image,
-    h1,
-    p,
-    .btn {
-      margin-left: 60px;
+    /* BOTÓN HAMBURGUESA */
+    .menu-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    /* Sangría en lista de ¿Por qué elegirnos? */
-    #preguntas-frecuentes ul {
-      padding-left: 30px;
-      margin-left: 0;
+    .menu-btn span {
+      display: block;
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.4s ease;
     }
 
-    /* Responsive para pantallas más grandes */
+    /* Transformaciones para cuando el menú está abierto */
+    .menu-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px; /* oculto por defecto */
+      width: 250px;
+      height: 100vh;
+      background: rgba(0, 77, 153, 0.85); /* azul semi-transparente */
+      backdrop-filter: blur(10px);
+      box-shadow: 2px 0 12px rgba(0,0,0,0.3);
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: left 0.3s ease;
+      z-index: 1050;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    /* Logo y nombre en sidebar */
+    .sidebar .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar .logo-container img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-right: 10px;
+    }
+
+    .sidebar .logo-container span {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #a9c6ff;
+    }
+
+    /* Lista del menú */
+    .sidebar ul {
+      list-style: disc;
+      padding-left: 20px; /* sangría a la derecha para los bullets */
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar ul li a {
+      color: #c3d8ff;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: block;
+      transition: color 0.3s ease;
+      text-align: left;
+    }
+
+    .sidebar ul li a:hover {
+      color: white;
+    }
+
+    /* Opcional: bloquea scroll body cuando sidebar está abierto */
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* Main content con margen para que no quede detrás del sidebar en pantallas anchas (opcional) */
     @media(min-width: 768px) {
-      .menu-toggle {
-        display: none;
-      }
-      .menu-list {
-        position: static;
-        max-height: none;
-        opacity: 1;
-        pointer-events: auto;
-        display: flex;
-        gap: 20px;
-        background: none;
-        width: auto;
-        box-shadow: none;
-      }
-      .menu-list li {
-        border-bottom: none;
-      }
-      .menu-list li a {
-        padding: 0;
-        color: white;
-      }
-      .header-image,
-      h1,
-      p,
-      .btn {
+      main {
         margin-left: 0;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Botón hamburguesa -->
+  <div class="menu-btn" aria-label="Abrir menú" role="button" tabindex="0" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" aria-hidden="true">
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo Grupo Fortuna" />
+      <span>Grupo Fortuna</span>
+    </div>
+    <ul>
+      <li><a href="#inicio" tabindex="-1">INICIO</a></li>
+      <li><a href="#carga-datos" tabindex="-1">CARGÁ TUS DATOS</a></li>
+      <li><a href="#preguntas-frecuentes" tabindex="-1">PREGUNTAS FRECUENTES</a></li>
+      <li><a href="#contacto" tabindex="-1">CONTACTO</a></li>
+    </ul>
+  </nav>
+
   <header>
-    <nav class="menu">
-      <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" role="button" tabindex="0">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-
-      <ul class="menu-list" id="menu-list">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#carga-datos">Cargá tus datos</a></li>
-        <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-
-    <!-- Imagen de encabezado -->
     <img
       src="https://drive.google.com/uc?export=view&id=1vLo9JberuHNKeXN6GnnQ4nq9hYP961wC"
       alt="Encabezado Grupo Fortuna"
@@ -165,6 +207,7 @@
   </header>
 
   <main>
+    <!-- contenido de la página -->
     <section id="carga-datos">
       <h2>¿Quiénes somos?</h2>
       <p>
@@ -251,18 +294,50 @@
   </footer>
 
   <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuList = document.getElementById('menu-list');
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const focusableElements = 'a, button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])';
 
-    menuToggle.addEventListener('click', () => {
-      menuList.classList.toggle('active');
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('open');
+      sidebar.classList.toggle('open');
+
+      // Cambiar aria-expanded
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !expanded);
+
+      // Cambiar aria-hidden
+      const hidden = sidebar.getAttribute('aria-hidden') === 'true';
+      sidebar.setAttribute('aria-hidden', !hidden);
+
+      // Control de tabulación para accesibilidad
+      const sidebarLinks = sidebar.querySelectorAll('a');
+      if (sidebar.classList.contains('open')) {
+        sidebarLinks.forEach(link => link.setAttribute('tabindex', '0'));
+        document.body.classList.add('menu-open');
+      } else {
+        sidebarLinks.forEach(link => link.setAttribute('tabindex', '-1'));
+        document.body.classList.remove('menu-open');
+      }
     });
 
-    // También permitir toggle con tecla Enter o espacio para accesibilidad
-    menuToggle.addEventListener('keydown', (e) => {
+    // Cerrar menú al hacer clic en un link
+    sidebar.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('open');
+        sidebar.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        sidebar.setAttribute('aria-hidden', 'true');
+        sidebar.querySelectorAll('a').forEach(link => link.setAttribute('tabindex', '-1'));
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    // Abrir menú con tecla Enter o Space cuando el foco está en el botón
+    menuBtn.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        menuList.classList.toggle('active');
+        menuBtn.click();
       }
     });
   </script>
