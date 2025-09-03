@@ -5,26 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grupo Fortuna</title>
 
-  <!-- Font Awesome para los íconos -->
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
 
   <style>
-    /* Estilos generales para el body y el header */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #4a90e2, #cce4ff);
       color: #333;
-      overflow-x: hidden;
+    }
+
+    /* --- SIDEBAR FIJO --- */
+    .sidebar-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: rgba(0, 77, 153, 0.85); /* Azul semi-transparente */
+      backdrop-filter: blur(8px);
+      box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .sidebar-fixed .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-fixed .logo-container img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .sidebar-fixed .logo-container span {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #dce7ff;
+      text-transform: uppercase;
+    }
+
+    .sidebar-fixed ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .sidebar-fixed ul li {
+      margin-bottom: 1.2rem;
+    }
+
+    .sidebar-fixed ul li a {
+      color: #c3d8ff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar-fixed ul li a:hover {
+      color: #fff;
+    }
+
+    /* --- CONTENIDO PRINCIPAL --- */
+    main {
+      margin-left: 240px; /* espacio para el sidebar */
+      padding: 2rem;
     }
 
     header {
       text-align: center;
       padding: 2rem 1rem;
-      position: relative;
       color: white;
     }
 
@@ -36,12 +96,6 @@
     header h1 {
       font-size: 2.5rem;
       margin: 0.5rem 0;
-      font-weight: bold;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
     }
 
     a.btn {
@@ -51,295 +105,80 @@
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
       font-weight: bold;
-      transition: transform 0.3s ease;
       display: inline-block;
     }
 
     a.btn:hover {
-      transform: scale(1.1);
+      background-color: #1f4f99;
     }
 
-    /* BOTÓN HAMBURGUESA */
-    .menu-btn {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      width: 30px;
-      height: 25px;
-      cursor: pointer;
-      z-index: 1100;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .menu-btn span {
-      display: block;
-      height: 4px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.4s ease;
-    }
-
-    /* Transformaciones para cuando el menú está abierto */
-    .menu-btn.open span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .menu-btn.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-btn.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px; /* oculto por defecto */
-      width: 250px;
-      height: 100vh;
-      background: rgba(0, 77, 153, 0.85); /* azul semi-transparente */
-      backdrop-filter: blur(10px);
-      box-shadow: 2px 0 12px rgba(0,0,0,0.3);
-      padding: 1rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      transition: left 0.3s ease;
-      z-index: 1050;
-    }
-
-    .sidebar.open {
-      left: 0;
-    }
-
-    /* Logo y nombre en sidebar */
-    .sidebar .logo-container {
-      display: flex;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-
-    .sidebar .logo-container img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      margin-right: 10px;
-    }
-
-    .sidebar .logo-container span {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #a9c6ff;
-    }
-
-    /* Lista del menú */
-    .sidebar ul {
-      list-style: disc;
-      padding-left: 20px; /* sangría a la derecha para los bullets */
-      margin: 0;
-      flex-grow: 1;
-    }
-
-    .sidebar ul li {
-      margin-bottom: 1.5rem;
-    }
-
-    .sidebar ul li a {
-      color: #c3d8ff;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1.1rem;
-      display: block;
-      transition: color 0.3s ease;
-      text-align: left;
-    }
-
-    .sidebar ul li a:hover {
-      color: white;
-    }
-
-    /* Opcional: bloquea scroll body cuando sidebar está abierto */
-    body.menu-open {
-      overflow: hidden;
-    }
-
-    /* Main content con margen para que no quede detrás del sidebar en pantallas anchas (opcional) */
-    @media(min-width: 768px) {
-      main {
-        margin-left: 0;
-      }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: #fff;
     }
   </style>
 </head>
 <body>
-  <!-- Botón hamburguesa -->
-  <div class="menu-btn" aria-label="Abrir menú" role="button" tabindex="0" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
 
-  <!-- Sidebar -->
-  <nav class="sidebar" aria-hidden="true">
+  <!-- Sidebar fijo -->
+  <nav class="sidebar-fixed">
     <div class="logo-container">
-      <img src="logo.png" alt="Logo Grupo Fortuna" />
+      <img src="logo.png" alt="Logo Grupo Fortuna">
       <span>Grupo Fortuna</span>
     </div>
     <ul>
-      <li><a href="#inicio" tabindex="-1">INICIO</a></li>
-      <li><a href="#carga-datos" tabindex="-1">CARGÁ TUS DATOS</a></li>
-      <li><a href="#preguntas-frecuentes" tabindex="-1">PREGUNTAS FRECUENTES</a></li>
-      <li><a href="#contacto" tabindex="-1">CONTACTO</a></li>
+      <li><a href="#inicio">INICIO</a></li>
+      <li><a href="#carga-datos">CARGÁ TUS DATOS</a></li>
+      <li><a href="#preguntas-frecuentes">PREGUNTAS FRECUENTES</a></li>
+      <li><a href="#contacto">CONTACTO</a></li>
     </ul>
   </nav>
 
-  <header>
-    <img
-      src="https://drive.google.com/uc?export=view&id=1vLo9JberuHNKeXN6GnnQ4nq9hYP961wC"
-      alt="Encabezado Grupo Fortuna"
-      class="header-image"
-    />
-
-    <h1 id="inicio">Bienvenido a Grupo Fortuna</h1>
-    <p>Dinero rápido, fácil y seguro.</p>
-    <a href="#contacto" class="btn">Contáctanos</a>
-  </header>
-
+  <!-- Contenido principal -->
   <main>
-    <!-- contenido de la página -->
+    <header>
+      <img
+        src="https://drive.google.com/uc?export=view&id=1vLo9JberuHNKeXN6GnnQ4nq9hYP961wC"
+        alt="Encabezado Grupo Fortuna"
+        class="header-image"
+      />
+      <h1 id="inicio">Bienvenido a Grupo Fortuna</h1>
+      <p>Dinero rápido, fácil y seguro.</p>
+      <a href="#contacto" class="btn">Contáctanos</a>
+    </header>
+
     <section id="carga-datos">
       <h2>¿Quiénes somos?</h2>
       <p>
-        En Grupo Fortuna trabajamos como gestores financieros oficiales. Gestionamos tu solicitud ante entidades financieras, bancos y mutuales con las que tenemos convenio, ayudándote a conseguir préstamos personales de forma rápida, segura y sin complicaciones.
+        En Grupo Fortuna trabajamos como gestores financieros oficiales. Gestionamos tu solicitud ante entidades financieras, bancos y mutuales con las que tenemos convenio.
       </p>
-    </section>
-
-    <section>
-      <h2>¿Cómo funciona?</h2>
-
-      <div class="step">
-        <div class="step-title">1. Análisis gratuito de tu perfil crediticio</div>
-        <div class="step-text">
-          Evaluamos tu situación financiera, ingresos, antigüedad laboral y comportamiento bancario.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-title">2. Presentamos tu solicitud</div>
-        <div class="step-text">
-          Enviamos tu documentación a las entidades más adecuadas según tu perfil.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-title">3. Recibís una oferta</div>
-        <div class="step-text">
-          Si sos aprobado, la financiera te hace una propuesta con monto, tasa y plazos.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-title">4. Acreditación</div>
-        <div class="step-text">
-          Si aceptás, dependiendo de algunos factores, el dinero puede acreditarse en tu cuenta el mismo día.
-        </div>
-      </div>
     </section>
 
     <section id="preguntas-frecuentes">
       <h2>¿Por qué elegirnos?</h2>
       <ul>
-        <li><strong>Sin costos ni adelantos.</strong> Nuestro servicio es 100% gratuito para vos.</li>
-        <li><strong>Sin vueltas ni letra chica.</strong> Proceso claro y transparente.</li>
+        <li><strong>Sin costos ni adelantos.</strong> Servicio 100% gratuito.</li>
+        <li><strong>Sin vueltas ni letra chica.</strong> Transparente y claro.</li>
         <li><strong>Trámite ágil y digital.</strong> Gestionamos todo por vos.</li>
-        <li><strong>Oficinas propias.</strong> Atención personalizada y segura.</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Legalidad y Seguridad</h2>
-      <p>
-        En Grupo Fortuna, todos los trámites y acuerdos se realizan mediante <strong>contratos formales y declaraciones juradas</strong>, asegurando que cada operación cumple con la normativa vigente.  
-        Nuestra gestión es <strong>100% legal y transparente</strong>, para que puedas confiar plenamente en nuestro servicio.
-      </p>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Escribinos a cualquiera de nuestros medios de comunicación</p>
+      <div class="social-icons">
+        <a href="https://wa.me/+5493513510597" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/grupofortunar" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/grupofortunar" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://tiktok.com/@grupofortunar" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="tel:+5493513510597"><i class="fas fa-phone"></i></a>
+      </div>
     </section>
+
+    <footer>
+      <p>&copy; 2025 Grupo Fortuna. Todos los derechos reservados.</p>
+    </footer>
   </main>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Escribinos a cualquiera de nuestros medios de comunicación</p>
-
-    <div class="social-icons">
-      <a href="https://wa.me/+5493513510597" target="_blank" title="WhatsApp" class="whatsapp">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="https://instagram.com/grupofortunar" target="_blank" title="Instagram" class="instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://facebook.com/grupofortunar" target="_blank" title="Facebook" class="facebook">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://tiktok.com/@grupofortunar" target="_blank" title="TikTok" class="tiktok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-      <a href="tel:+5493513510597" title="Teléfono" class="telefono">
-        <i class="fas fa-phone"></i>
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Grupo Fortuna. Todos los derechos reservados.</p>
-  </footer>
-
-  <script>
-    const menuBtn = document.querySelector('.menu-btn');
-    const sidebar = document.querySelector('.sidebar');
-    const focusableElements = 'a, button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])';
-
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('open');
-      sidebar.classList.toggle('open');
-
-      // Cambiar aria-expanded
-      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !expanded);
-
-      // Cambiar aria-hidden
-      const hidden = sidebar.getAttribute('aria-hidden') === 'true';
-      sidebar.setAttribute('aria-hidden', !hidden);
-
-      // Control de tabulación para accesibilidad
-      const sidebarLinks = sidebar.querySelectorAll('a');
-      if (sidebar.classList.contains('open')) {
-        sidebarLinks.forEach(link => link.setAttribute('tabindex', '0'));
-        document.body.classList.add('menu-open');
-      } else {
-        sidebarLinks.forEach(link => link.setAttribute('tabindex', '-1'));
-        document.body.classList.remove('menu-open');
-      }
-    });
-
-    // Cerrar menú al hacer clic en un link
-    sidebar.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('open');
-        sidebar.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        sidebar.setAttribute('aria-hidden', 'true');
-        sidebar.querySelectorAll('a').forEach(link => link.setAttribute('tabindex', '-1'));
-        document.body.classList.remove('menu-open');
-      });
-    });
-
-    // Abrir menú con tecla Enter o Space cuando el foco está en el botón
-    menuBtn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuBtn.click();
-      }
-    });
-  </script>
 </body>
 </html>
