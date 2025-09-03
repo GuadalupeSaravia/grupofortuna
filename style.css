@@ -107,7 +107,6 @@ section p {
 section ul {
   list-style-position: inside; /* Hace que el punto esté dentro de la caja de la lista */
   padding-left: 20px;           /* Sangría interna */
-  margin-left: 20px;            /* Sangría externa opcional */
   margin-top: 10px;
   margin-bottom: 10px;
 }
