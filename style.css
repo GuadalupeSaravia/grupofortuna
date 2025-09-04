@@ -7,155 +7,102 @@
   --blue-dark: #336FCC;
   --text-dark: #2F2F2F;
   --bg-light: #F5F5F5;
-  --white: #FFFFFF;
+  --white: #ffffff;
 }
 
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Estilos generales */
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, var(--blue-primary), var(--white));
+  background: linear-gradient(
+    to bottom,
+    var(--blue-primary) 0%,       /* azul desde el top */
+    var(--blue-primary) 320px,    /* mantener azul sólido hasta altura header */
+    var(--white) 100%             /* de ahí en adelante degradar al blanco */
+  );
   background-attachment: fixed;
   color: var(--text-dark);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
-/* Encabezado */
+/* Header */
 header {
-  position: relative;
   text-align: center;
-  padding: 60px 20px 120px; /* más espacio abajo por la onda */
-  color: var(--white);
-  background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
-  overflow: hidden;
+  padding: 2rem 1rem;
 }
 
-.header-image {
-  width: 100%;
-  max-width: 350px; /* límite en pantallas grandes */
-  height: auto;
-  margin-bottom: 30px;
+header img {
+  max-width: 180px;
+  margin-bottom: 1rem;
 }
 
 header h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
 }
 
 header p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.btn {
-  display: inline-block;
-  background-color: var(--blue-dark);
   color: var(--white);
-  padding: 12px 24px;
+  margin-bottom: 1.5rem;
+}
+
+header .btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--blue-dark);
+  color: var(--white);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: 600;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #295fbb;
-}
-
-/* Onda decorativa */
-header::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23FFFFFF' fill-opacity='1' d='M0,160L48,186.7C96,213,192,267,288,266.7C384,267,480,213,576,170.7C672,128,768,96,864,117.3C960,139,1056,213,1152,213.3C1248,213,1344,139,1392,101.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'/></svg>") no-repeat bottom;
-  background-size: cover;
+header .btn:hover {
+  background: var(--blue-primary);
 }
 
 /* Secciones */
 section {
-  width: 60%;
-  margin: 60px auto;
-  padding: 20px;
-  background-color: var(--white);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 768px) {
-  section {
-    width: 90%;
-  }
+  max-width: 900px;
+  margin: 2rem auto;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
 }
 
 section h2 {
-  color: var(--blue-dark);
-  margin-bottom: 15px;
   font-size: 1.8rem;
+  color: var(--blue-dark);
+  margin-bottom: 1rem;
 }
 
 section p {
   font-size: 1rem;
 }
 
-/* Pasos */
-.step {
-  margin-bottom: 30px;
+/* Listas numeradas */
+section ol {
+  padding-left: 1.5rem;
 }
 
-.step-title {
-  font-weight: 600;
+section ol li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+section ol li strong {
   color: var(--blue-primary);
-  margin-bottom: 5px;
-}
-
-.step-text {
-  margin-left: 10px;
-}
-
-/* Listas dentro de las secciones */
-section ul {
-  list-style-position: inside; /* Hace que el punto esté dentro de la caja de la lista */
-  padding-left: 20px;           /* Sangría interna */
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-section ul li {
-  margin-bottom: 8px;   /* espacio entre ítems */
-  line-height: 1.6;     /* aire entre líneas */
-}
-
-/* Iconos sociales */
-.social-icons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-
-.social-icons a {
-  color: var(--blue-dark);
-  font-size: 1.5rem;
-  transition: transform 0.3s;
-}
-
-.social-icons a:hover {
-  transform: scale(1.2);
 }
 
 /* Footer */
 footer {
-  background-color: var(--blue-dark);
-  color: var(--white);
   text-align: center;
-  padding: 20px;
-  margin-top: 40px;
+  padding: 1rem;
+  background: var(--blue-dark);
+  color: var(--white);
+  margin-top: 2rem;
 }
