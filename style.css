@@ -33,8 +33,10 @@ header {
 }
 
 .header-image {
-  max-width: 200px;
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 350px; /* límite en pantallas grandes */
+  height: auto;
+  margin-bottom: 30px;
 }
 
 header h1 {
