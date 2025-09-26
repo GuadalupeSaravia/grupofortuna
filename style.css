@@ -1,3 +1,4 @@
+/* Importar Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* Variables de color */
@@ -12,12 +13,12 @@
 /* Estilos generales */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--blue-primary); /* Fallback */
+  background-color: var(--blue-primary); /* fallback */
   background: linear-gradient(
     to bottom,
-    var(--blue-primary) 0%,       
-    var(--blue-primary) 320px,    
-    var(--white) 100%             
+    var(--blue-primary) 0%,
+    var(--blue-primary) 320px,
+    var(--white) 100%
   );
   background-attachment: fixed;
   color: var(--text-dark);
@@ -84,17 +85,17 @@ section p {
   font-size: 1rem;
 }
 
-/* Listas numeradas */
-section ol {
+/* Listas numeradas y con viñetas */
+section ol, section ul {
   padding-left: 1.5rem;
 }
 
-section ol li {
+section ol li, section ul li {
   margin-bottom: 1rem;
   font-size: 1rem;
 }
 
-section ol li strong {
+section li strong {
   color: var(--blue-primary);
 }
 
@@ -107,13 +108,39 @@ section ol li strong {
 }
 
 .social-icons a {
+  font-size: 1.8rem;
+  transition: transform 0.3s, color 0.3s;
   color: var(--blue-dark);
-  font-size: 1.5rem;
-  transition: transform 0.3s;
 }
 
+/* Hover general */
 .social-icons a:hover {
   transform: scale(1.2);
+}
+
+/* Colores personalizados por red social */
+.social-icons a.whatsapp:hover {
+  color: #25D366;
+}
+
+.social-icons a.instagram:hover {
+  color: #E1306C;
+}
+
+.social-icons a.facebook:hover {
+  color: #1877F2;
+}
+
+.social-icons a.tiktok:hover {
+  color: #FE2C55;
+}
+
+.social-icons a.phone:hover {
+  color: #000000;
+}
+
+.social-icons a.linkedin:hover {
+  color: #0077B5;
 }
 
 /* Footer */
