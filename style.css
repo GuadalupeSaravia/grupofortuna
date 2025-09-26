@@ -34,10 +34,10 @@ header {
 }
 
 header img {
-    max-width: 400px;
-    widht: 100%;
-    height: auto;
-    margin-bottom: 1rem;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 header h1 {
@@ -99,6 +99,29 @@ section ol li, section ul li {
 
 section li strong {
   color: var(--blue-primary);
+}
+
+/* Estilos para pasos del proceso */
+.step {
+  margin-bottom: 1.5rem;
+}
+
+.step-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--blue-dark);
+  margin-bottom: 0.4rem;
+}
+
+.step-number {
+  color: var(--blue-primary);
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+
+.step-text {
+  margin-left: 1rem;
+  font-size: 1rem;
 }
 
 /* Iconos sociales */
