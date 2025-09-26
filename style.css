@@ -34,8 +34,10 @@ header {
 }
 
 header img {
-  max-width: 180px;
-  margin-bottom: 1rem;
+    max-width: 400px;
+    widht: 100%;
+    height: auto;
+    margin-bottom: 1rem;
 }
 
 header h1 {
