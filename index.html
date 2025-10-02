@@ -82,26 +82,21 @@
     <!-- Contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Podes comunicarte directamente con nosotros mediante nuestros canales de atención o dejando tus datos:</p>
-
-      <!-- Formulario -->
-      <form id="contact-form">
-        <label>Nombre:</label>
-        <input type="text" name="Nombre" required pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+" title="Solo letras y espacios"/>
-
-        <label>Apellido:</label>
-        <input type="text" name="Apellido" required pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+" title="Solo letras y espacios"/>
-
-        <label>DNI:</label>
-        <input type="text" name="DNI" required pattern="^[0-9]{7,8}$" maxlength="8" title="Solo números (7-8 dígitos)"/>
-
-        <label>Teléfono de contacto:</label>
-        <input type="text" name="Telefono" required pattern="^[0-9]+$" title="Solo números"/>
-
-        <label>Correo electrónico:</label>
-        <input type="email" name="Correo" maxlength="50" required/>
-
-        <button type="submit">Enviar</button>
+      <p>Podes comunicarte con nosotros o dejarnos tus datos:</p>
+      <form id="contact-form" class="contact-form">
+        <input type="text" name="Nombre" placeholder="Nombre" required>
+        <input type="text" name="Apellido" placeholder="Apellido" required>
+        <input type="text" name="DNI" placeholder="DNI" required>
+        <input type="text" name="Telefono" placeholder="Teléfono" required>
+        <input type="email" name="Correo" placeholder="E-mail" required>
+        <textarea name="Mensaje" placeholder="Escribe tu mensaje..."></textarea>
+        <label class="checkbox">
+          <input type="checkbox" required> Acepto las políticas de privacidad
+        </label>
+        <button type="submit">ENVIAR</button>
+        <div class="success-message" id="success-message">
+          ✅ Tus datos fueron enviados con éxito.
+        </div>
       </form>
 
       <!-- Canales -->
