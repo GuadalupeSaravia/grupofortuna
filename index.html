@@ -83,21 +83,63 @@
     <section id="contacto">
       <h2>Contacto</h2>
       <p>Podes comunicarte con nosotros o dejarnos tus datos:</p>
-      <form id="contact-form" class="contact-form">
-        <input type="text" name="Nombre" placeholder="Nombre" required>
-        <input type="text" name="Apellido" placeholder="Apellido" required>
-        <input type="text" name="DNI" placeholder="DNI" required>
-        <input type="text" name="Telefono" placeholder="Teléfono" required>
-        <input type="email" name="Correo" placeholder="E-mail" required>
-        <textarea name="Mensaje" placeholder="Escribe tu mensaje..."></textarea>
-        <label class="checkbox">
-          <input type="checkbox" required> Acepto las políticas de privacidad
-        </label>
-        <button type="submit">ENVIAR</button>
-        <div class="success-message" id="success-message">
-          ✅ Tus datos fueron enviados con éxito.
+
+      <form>
+        <!-- Nombre y Apellido -->
+        <div class="form-row">
+          <input type="text" 
+             name="nombre" 
+             placeholder="Nombre" 
+             required 
+             pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,}" 
+             title="Solo letras y espacios, mínimo 2 caracteres">
+      
+          <input type="text" 
+             name="apellido" 
+             placeholder="Apellido" 
+             required 
+             pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,}" 
+             title="Solo letras y espacios, mínimo 2 caracteres">
         </div>
+
+        <!-- DNI y Teléfono -->
+        <div class="form-row">
+          <input type="text" 
+             name="dni" 
+             placeholder="DNI" 
+             required 
+             pattern="[0-9]{7,8}" 
+             title="Debe contener solo números (7 a 8 dígitos)">
+      
+          <input type="tel" 
+             name="telefono" 
+             placeholder="Teléfono" 
+             required 
+             pattern="[0-9+]{6,15}" 
+             title="Solo números, puede comenzar con +, sin espacios (6 a 15 dígitos)">
+        </div>
+
+        <!-- Email -->
+        <input type="email" 
+           name="email" 
+           placeholder="E-mail" 
+           required>
+
+        <!-- Mensaje -->
+        <textarea name="mensaje" 
+              placeholder="Escribe tu mensaje..." 
+              required></textarea>
+
+        <!-- Checkbox -->
+        <div class="checkbox-row">
+          <input type="checkbox" id="privacidad" required>
+          <label for="privacidad">Acepto las políticas de privacidad</label>
+        </div>
+
+        <!-- Botón -->
+        <button type="submit">ENVIAR</button>
       </form>
+
 
       <!-- Canales -->
       <div class="social-icons">
