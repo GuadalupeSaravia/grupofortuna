@@ -2,28 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Grupo Fortuna</title>
-  
+
   <!-- Favicon -->
   <link rel="icon" href="logo.png" type="image/png">
 
   <!-- Estilos -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 
   <!-- Font Awesome para íconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
-
 <body>
-
   <!-- Encabezado -->
   <header>
-    <img
-      src="https://drive.google.com/thumbnail?id=1vLo9JberuHNKeXN6GnnQ4nq9hYP961wC&sz=w1000"
-      alt="Encabezado Grupo Fortuna"
-      class="header-image"
-    />
+    <img src="https://drive.google.com/thumbnail?id=1vLo9JberuHNKeXN6GnnQ4nq9hYP961wC&sz=w1000" 
+         alt="Encabezado Grupo Fortuna" class="header-image"/>
     <h1>Bienvenido a Grupo Fortuna</h1>
     <p>Dinero rápido, fácil y seguro.</p>
     <a href="#contacto" class="btn">Contáctanos</a>
@@ -34,7 +29,9 @@
     <section>
       <h2>¿Quiénes somos?</h2>
       <p>
-        En Grupo Fortuna trabajamos como gestores financieros oficiales. Gestionamos tu solicitud ante entidades financieras, bancos y mutuales con las que tenemos convenio, ayudándote a conseguir préstamos personales de forma rápida, segura y sin complicaciones.
+        En Grupo Fortuna trabajamos como gestores financieros oficiales. 
+        Gestionamos tu solicitud ante entidades financieras, bancos y mutuales con las que tenemos convenio, 
+        ayudándote a conseguir préstamos personales de forma rápida, segura y sin complicaciones.
       </p>
     </section>
 
@@ -66,7 +63,7 @@
         <li><strong>Sin costos ni adelantos:</strong> Nuestro servicio es 100% gratuito para vos.</li>
         <li><strong>Sin vueltas ni letra chica:</strong> Proceso claro y transparente.</li>
         <li><strong>Trámite ágil y digital:</strong> Gestionamos todo por vos.</li>
-        <li><strong>Oficinas propias:</strong> Atención personalizada y segura.</li>
+        <li><strong>Oficinas propias:</strong> Atención personalizada y segura, también contamos con atención presencial en nuestra oficina en Córdoba Capital.</li>
       </ul>
     </section>
 
@@ -74,15 +71,40 @@
     <section>
       <h2>Legalidad y Seguridad</h2>
       <p>
-        En Grupo Fortuna, todos los trámites y acuerdos se realizan mediante <strong>contratos formales y declaraciones juradas</strong>, asegurando que cada operación cumple con la normativa vigente.  
-        Nuestra gestión es <strong>100% legal y transparente</strong>, para que puedas confiar plenamente en nuestro servicio.
+        En Grupo Fortuna, todos los trámites y acuerdos se realizan mediante 
+        <strong>contratos formales y declaraciones juradas</strong>, asegurando que cada operación cumple con la normativa vigente. 
+        Nuestra gestión es <strong>100% legal y transparente</strong>, para que puedas confiar plenamente en nuestro servicio. 
+        Y algo fundamental para nosotros: <strong>tu información es absolutamente confidencial</strong>. 
+        Solo vos, como titular, tenés acceso. Porque además de soluciones, brindamos respeto y confianza.
       </p>
     </section>
 
     <!-- Contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Podes comunicarte directamente con nosotros mediante nuestros canales de atención:</p>
+      <p>Podes comunicarte directamente con nosotros mediante nuestros canales de atención o dejando tus datos:</p>
+
+      <!-- Formulario -->
+      <form id="contact-form">
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" required pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+" title="Solo letras y espacios"/>
+
+        <label>Apellido:</label>
+        <input type="text" name="Apellido" required pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]+" title="Solo letras y espacios"/>
+
+        <label>DNI:</label>
+        <input type="text" name="DNI" required pattern="^[0-9]{7,8}$" maxlength="8" title="Solo números (7-8 dígitos)"/>
+
+        <label>Teléfono de contacto:</label>
+        <input type="text" name="Telefono" required pattern="^[0-9]+$" title="Solo números"/>
+
+        <label>Correo electrónico:</label>
+        <input type="email" name="Correo" maxlength="50" required/>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <!-- Canales -->
       <div class="social-icons">
         <a href="https://wa.me/+5493513510597" target="_blank" title="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
         <a href="https://instagram.com/grupofortunar" target="_blank" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
@@ -96,4 +118,29 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Grupo Fortuna. Todos los derechos reservados.</p
+    <p>&copy; 2025 Grupo Fortuna. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Script validación y envío -->
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxKUjQ1i1ld92CaCcsEPUuQzvexQa-QhluQz1hRPCug5ccK6O1araZnnQy_EdQcK-vAWg/exec";
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        alert("⚠ Por favor, revise sus datos");
+        return;
+      }
+
+      fetch(scriptURL, { method: "POST", body: new FormData(form)})
+        .then(() => {
+          alert("✅ ¡Gracias! Tus datos fueron enviados correctamente.");
+          form.reset();
+        })
+        .catch(error => alert("❌ Error al enviar: " + error.message));
+    });
+  </script>
+</body>
+</html>
