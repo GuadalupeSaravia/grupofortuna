@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -83,74 +83,87 @@
     <section id="contacto">
       <h2>Contacto</h2>
       <p>Podes comunicarte con nosotros o dejarnos tus datos:</p>
-
-      <form>
+    
+      <form id="contact-form" class="contact-form">
         <!-- Nombre y Apellido -->
-        <div class="form-row">
-          <input type="text" 
-             name="nombre" 
-             placeholder="Nombre" 
-             required 
-             pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,}" 
-             title="Solo letras y espacios, mínimo 2 caracteres">
-      
-          <input type="text" 
-             name="apellido" 
-             placeholder="Apellido" 
-             required 
-             pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,}" 
-             title="Solo letras y espacios, mínimo 2 caracteres">
-        </div>
+        <input type="text" 
+           name="nombre" 
+           placeholder="Nombre" 
+           required 
+           pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,}" 
+           title="Solo letras y espacios, mínimo 2 caracteres">
 
-        <!-- DNI y Teléfono -->
-        <div class="form-row">
-          <input type="text" 
-             name="dni" 
-             placeholder="DNI" 
-             required 
-             pattern="[0-9]{7,8}" 
-             title="Debe contener solo números (7 a 8 dígitos)">
-      
-          <input type="tel" 
-             name="telefono" 
-             placeholder="Teléfono" 
-             required 
-             pattern="[0-9+]{6,15}" 
-             title="Solo números, puede comenzar con +, sin espacios (6 a 15 dígitos)">
-        </div>
+        <input type="text" 
+           name="apellido" 
+           placeholder="Apellido" 
+           required 
+           pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ ]{2,}" 
+           title="Solo letras y espacios, mínimo 2 caracteres">
+
+        <!-- DNI -->
+        <input type="text" 
+           name="dni" 
+           placeholder="DNI" 
+           required 
+           inputmode="numeric"
+           pattern="^[0-9]{7,8}$" 
+           title="Solo números (7 a 8 dígitos) sin espacios ni símbolos">
+
+        <!-- Teléfono -->
+        <input type="tel" 
+           name="telefono" 
+           placeholder="Teléfono" 
+           required 
+           inputmode="numeric"
+           pattern="^[0-9]{6,15}$" 
+           title="Solo números (6 a 15 dígitos), sin espacios ni símbolos">
 
         <!-- Email -->
         <input type="email" 
            name="email" 
            placeholder="E-mail" 
-           required>
+           required 
+           title="Ingrese un correo electrónico válido (ej: usuario@mail.com)">
+
+        <!-- Fuente de ingresos -->
+        <select name="ingresos" required>
+          <option value="" disabled selected>Seleccioná tu fuente de ingresos</option>
+          <option value="Recibo de sueldo empleado público">Recibo de sueldo empleado público</option>
+          <option value="Recibo de sueldo empleado privado">Recibo de sueldo empleado privado</option>
+          <option value="AUH / SUAF">AUH / SUAF</option>
+          <option value="Pensión">Pensión</option>
+          <option value="Jubilación">Jubilación</option>
+          <option value="Fuerzas de seguridad">Fuerzas de seguridad</option>
+          <option value="Empleados nacionales">Empleados nacionales</option>
+          <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+          <option value="Otro">Otro</option>
+        </select>
 
         <!-- Mensaje -->
-        <textarea name="mensaje" 
-              placeholder="Escribe tu mensaje..." 
-              required></textarea>
+        <textarea name="mensaje" placeholder="Escribí tu consulta o duda..." required></textarea>
 
         <!-- Checkbox -->
-        <div class="checkbox-row">
+        <label class="checkbox">
           <input type="checkbox" id="privacidad" required>
-          <label for="privacidad">Acepto las políticas de privacidad</label>
-        </div>
+          Acepto las políticas de privacidad
+        </label>
 
         <!-- Botón -->
         <button type="submit">ENVIAR</button>
+        <div class="success-message">✅ ¡Gracias! Tus datos fueron enviados correctamente.</div>
       </form>
 
+  <!-- Iconos sociales -->
+  <div class="social-icons">
+    <a href="https://wa.me/+5493513510597" target="_blank" title="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://instagram.com/grupofortunar" target="_blank" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com/grupofortunar" target="_blank" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://tiktok.com/@grupofortunar" target="_blank" title="TikTok" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    <a href="tel:+5493513510597" title="Teléfono" class="phone"><i class="fas fa-phone"></i></a>
+    <a href="https://ar.linkedin.com/in/grupofortunar" target="_blank" title="LinkedIn" class="linkedin"><i class="fab fa-linkedin"></i></a>
+  </div>
+</section>
 
-      <!-- Canales -->
-      <div class="social-icons">
-        <a href="https://wa.me/+5493513510597" target="_blank" title="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://instagram.com/grupofortunar" target="_blank" title="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://facebook.com/grupofortunar" target="_blank" title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://tiktok.com/@grupofortunar" target="_blank" title="TikTok" class="tiktok"><i class="fab fa-tiktok"></i></a>
-        <a href="tel:+5493513510597" title="Teléfono" class="phone"><i class="fas fa-phone"></i></a>
-        <a href="https://ar.linkedin.com/in/grupofortunar" target="_blank" title="LinkedIn" class="linkedin"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </section>
   </main>
 
   <!-- Footer -->
