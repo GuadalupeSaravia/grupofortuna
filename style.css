@@ -221,9 +221,12 @@ footer {
   font-size: 13px;
   color: var(--text-dark);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start; /* 👈 Esto alinea a la izquierda */
   gap: 8px;
+  padding-left: 0.25rem;       /* 👈 Opcional, ajusta para alinear más fino */
 }
+
 
 .contact-form button {
   grid-column: 1 / 3;
