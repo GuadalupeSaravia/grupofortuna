@@ -180,20 +180,25 @@ footer {
 /* ============================= */
 /* FORMULARIO DE CONTACTO        */
 /* ============================= */
+* {
+  box-sizing: border-box;
+}
+
+
 .contact-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 20px;
   margin-top: 1.5rem;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
   border: 1px solid #ddd;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'Poppins', sans-serif;
   outline: none;
   transition: 0.3s;
@@ -216,7 +221,7 @@ footer {
   font-size: 13px;
   color: var(--text-dark);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
 }
 
