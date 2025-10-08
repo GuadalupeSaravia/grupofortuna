@@ -277,10 +277,15 @@ footer {
   }
 }
 
-/* Contenedor para alinear el checkbox */
 .contact-form .checkbox-wrapper {
   grid-column: 1 / 3; /* Ocupa todo el ancho del formulario */
   display: flex;
   align-items: center;
   padding: 4px 0;
 }
+
+.contact-form .checkbox-wrapper label {
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
