@@ -1,6 +1,10 @@
 /* Importar Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 /* Variables de color */
 :root {
   --blue-primary: #4085F3;
@@ -180,9 +184,7 @@ footer {
 /* ============================= */
 /* FORMULARIO DE CONTACTO        */
 /* ============================= */
-* {
-  box-sizing: border-box;
-}
+
 
 
 .contact-form {
@@ -216,14 +218,24 @@ footer {
   height: 100px;
 }
 
+.contact-form .checkbox-wrapper {
+  display: flex;
+  align-items:center;
+  padding: 4px 0;
+}
+
+.contact-form .checkbox-wrapper label {
+  white-space: nowrap;
+}
+
 .contact-form .checkbox {
   display: flex;
   align-items: center;
+  justify-items: flex-start;
   gap: 8px;
   margin-left: 0;             /* Alineado a la izquierda */
   padding-left: 0;
-  width: 100%;                /* Que ocupe todo el ancho del formulario */
-  box-sizing: border-box;
+  width: auto;
 }
 
 .contact-form input[type="checkbox"] {
@@ -277,14 +289,4 @@ footer {
   }
 }
 
-.contact-form .checkbox-wrapper {
-  display: flex;
-  align-items: self-start;
-  padding: 4px 0;
-}
-
-.contact-form .checkbox-wrapper label {
-  white-space: nowrap;
-  margin-left: 8px;
-}
 
