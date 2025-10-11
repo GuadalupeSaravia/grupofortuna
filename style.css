@@ -278,9 +278,8 @@ footer {
 }
 
 .contact-form .checkbox-wrapper {
-  grid-column: 3 / 3; /* Ocupa todo el ancho del formulario */
   display: flex;
-  align-items: center;
+  align-items: self-start;
   padding: 4px 0;
 }
 
